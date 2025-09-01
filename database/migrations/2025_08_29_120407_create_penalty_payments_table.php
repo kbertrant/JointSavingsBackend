@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('penalty_payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('fk_con')->nullable();
-            $table->unsignedBigInteger('fk_ref')->nullable();
+            $table->unsignedBigInteger('fk_pen')->nullable();
             $table->integer('amount');
             $table->string('ref');
             $table->dateTime('pay_date');
             $table->timestamps();
 
-            $table->foreign('fk_con')->references('id')->on('contributions');
-            $table->foreign('fk_ref')->references('id')->on('refunds');
+            $table->foreign('fk_pen')->references('id')->on('penalties');
         });
     }
 
