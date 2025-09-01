@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\TontineMmber;
+use App\Models\TontineMember;
 use Illuminate\Http\Request;
 
-class TontineMmberController extends Controller
+class TontineMemberController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class TontineMmberController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TontineMmber $tontineMmber)
+    public function show(TontineMember $tontineMmber)
     {
         //
     }
@@ -42,7 +42,7 @@ class TontineMmberController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TontineMmber $tontineMmber)
+    public function edit(TontineMember $tontineMmber)
     {
         //
     }
@@ -50,7 +50,7 @@ class TontineMmberController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TontineMmber $tontineMmber)
+    public function update(Request $request, TontineMember $tontineMmber)
     {
         //
     }
@@ -58,7 +58,7 @@ class TontineMmberController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TontineMmber $tontineMmber)
+    public function destroy(TontineMember $tontineMmber)
     {
         //
     }

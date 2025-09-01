@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\PenaltyPayment;
 use Illuminate\Http\Request;
 
-class PenaltyPaymentController extends Controller
+class PenaltyPaymentController extends BaseController
 {
     /**
      * Display a listing of the resource.

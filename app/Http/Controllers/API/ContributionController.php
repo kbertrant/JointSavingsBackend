@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\Contribution;
 use Illuminate\Http\Request;
+use App\Http\Controllers\API\BaseController as BaseController;
 
-class ContributionController extends Controller
+class ContributionController extends BaseController
 {
     /**
      * Display a listing of the resource.

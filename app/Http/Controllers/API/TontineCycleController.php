@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\TontineCycle;
 use Illuminate\Http\Request;
 
-class TontineCycleController extends Controller
+class TontineCycleController extends BaseController
 {
     /**
      * Display a listing of the resource.

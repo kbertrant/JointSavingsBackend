@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Models\Loan;
 use Illuminate\Http\Request;
 
-class LoanController extends Controller
+class LoanController extends BaseController
 {
     /**
      * Display a listing of the resource.
