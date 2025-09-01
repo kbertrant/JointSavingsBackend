@@ -5,6 +5,7 @@ namespace App\Http\Controller\API;
 use App\Models\Beneficiary;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
+use Illuminate\Support\Facades\Validator;
 
 class BeneficiaryController extends BaseController
 {
@@ -13,15 +14,8 @@ class BeneficiaryController extends BaseController
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $beneficiaries = Beneficiary::all();
+        return $this->sendResponse($beneficiaries, 'List of beneficiaries');
     }
 
     /**
@@ -29,7 +23,31 @@ class BeneficiaryController extends BaseController
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:55',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
+            'c_password' => 'required|same:password',
+        ]);
+
+        if($validator->fails()){
+            return $this->sendError('Validation Error.', $validator->errors());       
+        }
+
+        try {
+            // Create benef
+            $benef = new Beneficiary();
+            $benef->name = $request->name;
+            $benef->description = $request->description;
+            $benef->save();
+            
+            // Return Json Response
+            return $this->sendResponse($benef, 'User login successfully.');
+        } catch (\Exception $e) {
+            // Return Json Response
+            return $this->sendError('Unauthorised', ['error'=>'Unauthorised']);
+        }
     }
 
     /**
@@ -41,17 +59,9 @@ class BeneficiaryController extends BaseController
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Beneficiary $beneficiary)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Beneficiary $beneficiary)
+    public function update(Request $request, int $id)
     {
         //
     }
@@ -59,8 +69,9 @@ class BeneficiaryController extends BaseController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Beneficiary $beneficiary)
+    public function destroy(int $id)
     {
-        //
+        Beneficiary::destroy($id);
+        return $this->sendResponse($success, 'Beneficiaire supprimé');
     }
 }
